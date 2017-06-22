@@ -21,6 +21,7 @@ export default class FBLogin extends Component {
                     'Logged in!',
                     `Hi ${profile.name}!`,
                 );
+                console.log(profile);
                 break;
             }
             case 'cancel': {
@@ -52,7 +53,7 @@ export default class FBLogin extends Component {
                 button
                 type='facebook'
                 onPress={this._handleFacebookLogin}
-                style={{paddingLeft: 20, paddingRight: 20}}
+                style={{paddingLeft: 30, paddingRight: 30}}
             />
         );
     }
