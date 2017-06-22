@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, Button, Alert } from 'react-native';
+import { View, ScrollView, StyleSheet, Image, Button, Alert } from 'react-native';
 import { Constants } from 'expo';
 import { Card, Text } from 'react-native-elements';
 
@@ -38,21 +38,24 @@ export default class WeatherCheeseDisplay extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text h2 style={styles.date}>
-                    Monday, June 12th
-                </Text>
-                <Text h4 style={styles.location}>
-                    Massapequa, NY
-                </Text>
-                
-                <WeatherCard renderCard={this.renderCard} data={data.weatherData} />
-                <CheeseCard renderCard={this.renderCard} data={data.cheeseData} />
+                <View style={[styles.header]}></View>
+                <ScrollView>
+                    <Text h3 style={styles.date}>
+                        Monday, June 12th
+                    </Text>
+                    <Text style={styles.location}>
+                        Massapequa, NY
+                    </Text>
+                    
+                    <WeatherCard renderCard={this.renderCard} data={data.weatherData} />
+                    <CheeseCard renderCard={this.renderCard} data={data.cheeseData} />
 
-                <Button
-                    title="Wine"
-                    onPress={this._handleButtonPress}
-                    style={styles.winebutton}
-                />
+                    <Button
+                        title="Wine"
+                        onPress={this._handleButtonPress}
+                        style={styles.winebutton}
+                    />
+                </ScrollView>
             </View>
         );
     }
@@ -64,15 +67,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: Constants.statusBarHeight,
-        backgroundColor: '#ecf0f1',
+        backgroundColor: '#c6c9b0',
     },
     location: {
         color: '#34495e',
         margin: 0,
     },
     date: {
+        
     },
     winebutton: {
         backgroundColor: 'red',
     },
+    header: {
+        height: Constants.statusBarHeight,
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        backgroundColor: '#e4d98d',
+        zIndex: 10
+  },
 });
