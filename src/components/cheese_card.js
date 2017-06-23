@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const CheeseCard = ({renderCard, data}) => {
+export const CheeseCard = ({_renderCard, data}) => {
     return (
-        renderCard(data)
+        _renderCard(data)
     );
 }
 

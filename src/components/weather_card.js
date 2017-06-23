@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const WeatherCard = ({renderCard, data}) => {
+export const WeatherCard = ({_renderCard, data}) => {
     return (
-        renderCard(data)
+        _renderCard(data)
     );
 }
 
