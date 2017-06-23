@@ -38,15 +38,16 @@ export default class WeatherCheeseDisplay extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={[styles.header]}></View>
-                <ScrollView>
-                    <Text h3 style={styles.date}>
+                <View style={[styles.header]}>
+                    <Text h4 style={styles.date}>
                         Monday, June 12th
                     </Text>
                     <Text style={styles.location}>
                         Massapequa, NY
                     </Text>
-                    
+                </View>
+
+                <ScrollView>
                     <WeatherCard renderCard={this.renderCard} data={data.weatherData} />
                     <CheeseCard renderCard={this.renderCard} data={data.cheeseData} />
 
@@ -54,6 +55,7 @@ export default class WeatherCheeseDisplay extends Component {
                         title="Wine"
                         onPress={this._handleButtonPress}
                         style={styles.winebutton}
+                        color={'#b71c1c'}
                     />
                 </ScrollView>
             </View>
@@ -67,25 +69,26 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: Constants.statusBarHeight,
-        backgroundColor: '#c6c9b0',
+        backgroundColor: '#fafafa',
     },
     location: {
         color: '#34495e',
         margin: 0,
+        alignSelf: 'center',
     },
     date: {
-        
+        alignSelf: 'center',
     },
     winebutton: {
-        backgroundColor: 'red',
     },
     header: {
-        height: Constants.statusBarHeight,
+        height: 75,
         position: 'absolute',
+        paddingTop: Constants.statusBarHeight,
         left: 0,
         right: 0,
         top: 0,
-        backgroundColor: '#e4d98d',
+        backgroundColor: '#ffee58',
         zIndex: 10
   },
 });
