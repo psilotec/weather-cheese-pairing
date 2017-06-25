@@ -6,23 +6,26 @@ import FBLogin from './fb_login';
 
 export default class Login extends React.Component {
   state = {
-    locationResult: '',
+    locationResult: null,
   };
 
   componentDidMount() {
-    this._getLocationAsync();
+    this._getLocationAsync()
   }
 
   _getLocationAsync = async () => {
-   let { status } = await Permissions.askAsync(Permissions.LOCATION);
-   if (status !== 'granted') {
-     this.setState({
-       locationResult: 'Permission to access location was denied',
-     });
-   }
-
-   let location = await Location.getCurrentPositionAsync({});
-   this.setState({ locationResult: JSON.stringify(location) });
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      this.setState({
+        locationResult: 'Permission to access location was denied',
+      });
+    }
+    try {
+      let location = await Location.getCurrentPositionAsync({});
+      this.setState({ locationResult: JSON.stringify(location) });
+    } catch (error) {
+      console.log(error);
+    }
  };
 
   render() {
@@ -31,8 +34,9 @@ export default class Login extends React.Component {
         <Text style={styles.headline}>Weather and Cheese Pairing</Text>
         <Image source={require('../images/wcpLogo.png')} />
         <View style={styles.fblogin}>
-          <FBLogin />
-          <Text>{this.state.locationResult}</Text>
+          {(this.state.locationResult == null) 
+            ? <FBLogin /> 
+            : <Text>Pairing...</Text>}
         </View>
       </View>
     );
