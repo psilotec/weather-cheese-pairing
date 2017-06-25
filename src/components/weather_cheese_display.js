@@ -14,23 +14,32 @@ const data = {
 };
 
 export default class WeatherCheeseDisplay extends Component {
-    _handleButtonPress = () => {
-        Alert.alert(
-            `....and while you're at it`,
-            `you might as well enjoy a delcious red. Here's a nice one`,
-        );
-    };
-
     _renderCard(item) {
         return (
             <View style={{marginTop: 70}}>
-                <Card
-                    title={item.title}
-                    image={{uri: item.imgUri}}>
-                    <Text style={{marginBottom: 10}}>
-                        {item.description}
-                    </Text>
-                </Card>
+   
+                <Image source={{ uri: item.imgUri}} style={{flex: 1, maxHeight: 200}} />
+
+                <View
+                    style={{alignItems: 'flex-end'}}>
+                            <Icon
+                                raised
+                                name='local-bar'
+                                color='#b71c1c'
+                                reverse
+                                onPress={() => { Alert.alert(`...and while you're at it`, 
+                                                             `You might as well enjoy this delcious red.`)}} />
+                </View>
+
+                <View
+                    style={{backgroundColor: "#ffeb3b"}}>
+                    <Text h3 style={{margin: 20}}>{item.title}</Text>
+                </View>
+
+                <View
+                    style={{backgroundColor: "#ffffff"}}>
+                    <Text style={{margin: 10}}>{item.description}</Text>
+                </View>
             </View>
         );
     }
@@ -65,14 +74,12 @@ export default class WeatherCheeseDisplay extends Component {
                                 <Text h4>{data.weatherData.temp}</Text>
                             </View>
 
-                            <CheeseCard _renderCard={this._renderCard} data={data.cheeseData} />
 
-                            <Icon
-                                raised
-                                name='local-bar'
-                                color='#b71c1c'
-                                reverse
-                                onPress={this._handleButtonPress} />
+                            <View style={{flex: 3}}>
+                                <CheeseCard _renderCard={this._renderCard} data={data.cheeseData} />
+                            </View>
+
+ 
                         </View>
                     </BlurView>
 
@@ -114,8 +121,13 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         top: 0,
-        backgroundColor: '#ffee58',
+        backgroundColor: '#ffeb3b',
         zIndex: 10,
+        shadowColor: '#000000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
   },
     scrollViewContainer: {
         paddingTop: 75,
