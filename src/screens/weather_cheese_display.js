@@ -10,8 +10,8 @@ import {
 import { Constants, BlurView } from 'expo';
 import { Card, Text, Icon } from 'react-native-elements';
 
-import { CheeseCard } from './cheese_card';
-import { WeatherCard } from './weather_card';
+import { CheeseCard } from '../components/cheese_card';
+import { WeatherCard } from '../components/weather_card';
 
 const data = {
   weatherData: { title: 'Kinda Rainy', temp: '50°' },
