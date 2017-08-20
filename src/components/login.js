@@ -10,7 +10,7 @@ export default class Login extends React.Component {
   };
 
   componentDidMount() {
-    this._getLocationAsync()
+    this._getLocationAsync();
   }
 
   _getLocationAsync = async () => {
@@ -26,7 +26,7 @@ export default class Login extends React.Component {
     } catch (error) {
       console.log(error);
     }
- };
+  };
 
   render() {
     return (
@@ -34,8 +34,8 @@ export default class Login extends React.Component {
         <Text style={styles.headline}>Weather and Cheese Pairing</Text>
         <Image source={require('../images/wcpLogo.png')} />
         <View style={styles.fblogin}>
-          {(this.state.locationResult == null) 
-            ? <FBLogin /> 
+          {this.state.locationResult == null
+            ? <FBLogin />
             : <Text>Pairing...</Text>}
         </View>
       </View>
