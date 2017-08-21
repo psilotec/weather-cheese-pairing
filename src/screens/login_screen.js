@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Constants, Location, Permissions } from 'expo';
 
-import FBLogin from './fb_login';
-
-export default class Login extends React.Component {
+export default class LoginScreen extends React.Component {
   state = {
     locationResult: null,
   };
@@ -35,7 +33,7 @@ export default class Login extends React.Component {
         <Image source={require('../images/wcpLogo.png')} />
         <View style={styles.fblogin}>
           {this.state.locationResult == null
-            ? <FBLogin />
+            ? <Text>Please enable GPS</Text>
             : <Text>Pairing...</Text>}
         </View>
       </View>

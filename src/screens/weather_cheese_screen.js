@@ -24,7 +24,7 @@ const data = {
   },
 };
 
-export default class WeatherCheeseDisplay extends Component {
+export default class WeatherCheeseScreen extends Component {
   _renderCard(item) {
     return (
       <View style={{ marginTop: 70 }}>
