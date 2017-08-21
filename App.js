@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import LoginScreen from './src/screens/login_screen';
-import WeatherCheeseDisplay from './src/screens/weather_cheese_display';
+import WeatherCheeseScreen from './src/screens/weather_cheese_screen';
 
 export default class App extends React.Component {
   render() {
