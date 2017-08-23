@@ -16,19 +16,15 @@ class App extends React.Component {
           weatherCheese: { screen: WeatherCheeseScreen },
           cardScreen: {
             screen: StackNavigator({
-              cheeseCard: { screen: cheeseScreen },
-              wineCard: { screen: wineScreen },
+              cheeseCard: { screen: CheeseScreen },
+              wineCard: { screen: WineScreen },
             }),
           },
         }),
       },
     });
 
-    return (
-      <View style={styles.container}>
-        <MainNavigator />
-      </View>
-    );
+    return <MainNavigator />;
   }
 }
 
