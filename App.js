@@ -1,16 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
-import Login from './src/components/login';
-import WeatherCheeseDisplay from './src/components/weather_cheese_display';
+import LoginScreen from './src/screens/login_screen';
+import WeatherCheeseScreen from './src/screens/weather_cheese_screen';
+import CheeseScreen from './src/screens/cheese_screen';
+import WineScreen from './src/screens/wine_screen';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Login />
-      </View>
-    );
+    const MainNavigator = TabNavigator({
+      login: { screen: LoginScreen },
+      main: {
+        screen: TabNavigator({
+          weatherCheese: { screen: WeatherCheeseScreen },
+          cardScreen: {
+            screen: StackNavigator({
+              cheeseCard: { screen: CheeseScreen },
+              wineCard: { screen: WineScreen },
+            }),
+          },
+        }),
+      },
+    });
+
+    return <MainNavigator />;
   }
 }
 
@@ -22,3 +36,5 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
 });
+
+export default App;

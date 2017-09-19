@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Constants, Location, Permissions } from 'expo';
 
-import FBLogin from './fb_login';
-
-export default class Login extends React.Component {
+export default class LoginScreen extends React.Component {
   state = {
     locationResult: null,
   };
 
   componentDidMount() {
-    this._getLocationAsync()
+    this._getLocationAsync();
   }
 
   _getLocationAsync = async () => {
@@ -26,7 +24,7 @@ export default class Login extends React.Component {
     } catch (error) {
       console.log(error);
     }
- };
+  };
 
   render() {
     return (
@@ -34,8 +32,8 @@ export default class Login extends React.Component {
         <Text style={styles.headline}>Weather and Cheese Pairing</Text>
         <Image source={require('../images/wcpLogo.png')} />
         <View style={styles.fblogin}>
-          {(this.state.locationResult == null) 
-            ? <FBLogin /> 
+          {this.state.locationResult == null
+            ? <Text>Please enable GPS</Text>
             : <Text>Pairing...</Text>}
         </View>
       </View>
